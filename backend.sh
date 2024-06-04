@@ -30,39 +30,39 @@ else
 fi
 
 mkdir -p /app &>>$LOG_FILE
-VALIDATE $? "Creating app directory"
+#VALIDATE $? "Creating app directory"
 
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOG_FILE
-VALIDATE $? "downloading backend code"
+#VALIDATE $? "downloading backend code"
 
 cd /app
 rm -rf /app/*
 unzip /tmp/backend.zip &>>$LOG_FILE
-VALIDATE $? "Extracting backend code"
+#VALIDATE $? "Extracting backend code"
 
 npm install &>>$LOG_FILE
-VALIDATE $? "Installing nodejs dependencies"
+#VALIDATE $? "Installing nodejs dependencies"
 
 cp /home/ec2-user/expense-shell-1/backend.service /etc/systemd/system/backend.service &>>$LOG_FILE
-VALIDATE $? "Copied backend service"
+#VALIDATE $? "Copied backend service"
 
 systemctl daemon-reload &>>$LOG_FILE
-VALIDATE $? "daemon reload"
+#VALIDATE $? "daemon reload"
 
 systemctl start backend &>>$LOG_FILE
-VALIDATE $? "Starting backend"
+#VALIDATE $? "Starting backend"
 
 systemctl enable backend &>>$LOG_FILE
-VALIDATE $? "enabling backend"
+#VALIDATE $? "enabling backend"
 
 dnf install mysql -y &>>$LOG_FILE
-VALIDATE $? "Installing mysql client"
+#VALIDATE $? "Installing mysql client"
 
 mysql --host=54.87.219.211 --user=root --password=${mysql_root_password} < /app/schema/backend.sql &>> $LOG_FILE
-VALIDATE $? "Schema Loading"
+#VALIDATE $? "Schema Loading"
 
 systemctl restart backend &>>$LOG_FILE
-VALIDATE $? "Restarting backend"
+#VALIDATE $? "Restarting backend"
 
 ##
 
