@@ -9,13 +9,13 @@ read -s  mysql_root_password
 
 
 dnf module disable nodejs -y &>>$LOG_FILE
-VALIDATE $? "Disabling default nodejs"
+#VALIDATE $? "Disabling default nodejs"
 
 dnf module enable nodejs:20 -y &>>$LOG_FILE
-VALIDATE $? "Enabling node:20 version"
+#VALIDATE $? "Enabling node:20 version"
 
 dnf install nodejs -y &>>$LOG_FILE
-VALIDATE $? "Installing nodejs"
+#VALIDATE $? "Installing nodejs"
 
 #useradd expense
 #VALIDATE $? "creating expense user"
