@@ -21,7 +21,7 @@ VALIDATE $? "Starting MySQL Server"
 
 
 #Below code will be useful for idemponent nature
-mysql --host=3.80.83.45 --user=root --password=${mysql_root_password} -e 'SHOW DATABASES;' &>> $LOG_FILE
+mysql --host=54.87.219.211 --user=root --password=${mysql_root_password} -e 'SHOW DATABASES;' &>> $LOG_FILE
 if [ $? -ne 0 ]
 then
    mysql_secure_installation --set-root-pass ${mysql_root_password} &>> $LOG_FILE
