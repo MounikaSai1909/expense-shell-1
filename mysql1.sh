@@ -10,7 +10,7 @@ read -s  mysql_root_password
 dnf install mysql-server -y &>>$LOG_FILE
 #VALIDATE $? "Installing MySQL Server"
 
-systemctl enable mysqld &>>$LOG_FILE
+systemctl enable mysgfqld &>>$LOG_FILE
 #VALIDATE $? "Enabling MySQL Server"
 
 systemctl start mysqld &>>$LOG_FILE
