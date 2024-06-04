@@ -25,7 +25,7 @@ mysql --host=54.87.219.211 --user=root --password=${mysql_root_password} -e 'SHO
 if [ $? -ne 0 ]
 then
    mysql_secure_installation --set-root-pass ${mysql_root_password} &>> $LOG_FILE
- #  VALIDATE $? "Setting up the root password"
+ # VALIDATE $? "Setting up the root password"
 else 
     echo -e "MySQL root password is already setup.. $Y SKIPPING  $N"
 fi
