@@ -1,6 +1,15 @@
 #!/bin/bash
 
+set -e
+
+handle_error(){
+    echo "Error occured at line number:n$1, error command: $2"
+}
+
+
+trap 'handle_error ${LINENO} "BASH_COMMAND"' ERR
 USERID=$(id -u)
+
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOG_FILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.log
